@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+
+NOW=$(date +%s%3N)
+START_TIME=$BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS
+
+echo "--- :datadog: Recording command run time"
+
+RUNTIME_MS=$(($NOW-$START_TIME))
+
+echo "Total runtime ${RUNTIME_MS}ms"

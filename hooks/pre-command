@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -euo pipefail
+
+echo "--- :datadog: Recording command start time"
+
+export BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS=`date +%s%3N`
+
+echo "Command started at ${BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS}"
