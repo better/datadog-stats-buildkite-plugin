@@ -7,5 +7,17 @@ START_TIME=$BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS
 echo "--- :datadog: Recording command run time"
 
 RUNTIME_MS=$(($NOW-$START_TIME))
+BK_COMMAND=${BUILDKITE_COMMAND}
+BK_LABEL=${BUILDKITE_LABEL}
+
+IS_MASTER=false
+
+if [ "$BUILDKITE_BRANCH" == "master" ]; then
+  IS_MASTER=true
+fi
+
+PIPELINE_SLUG=${BUILDKITE_PIPELINE_SLUG}
+RETRY_COUNT=${BUILDKITE_RETRY_COUNT:-0}
 
 echo "Total runtime ${RUNTIME_MS}ms"
+echo Tags: is_master:${IS_MASTER},pipeline_slug:${PIPELINE_SLUG},step_command:${BK_COMMAND},step_label:${BK_LABEL},retry_count:${RETRY_COUNT}
