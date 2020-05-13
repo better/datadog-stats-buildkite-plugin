@@ -4,6 +4,8 @@ services:
     image: buildkite/plugin-tester
     volumes:
       - ".:/plugin:ro"
+    ports:
+      - 8125:8125
   lint:
     image: buildkite/plugin-linter
     command: ['--id', 'better/datadog-stats']

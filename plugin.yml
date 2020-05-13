@@ -3,10 +3,9 @@ description: Collects detailed stats on build times and outcomes and sends to da
 author: https://github.com/better
 requirements:
   - buildkite-agent
+  - nc
 configuration:
   properties:
-    pattern:
+    dogstatsd_host:
       name: string
-  required:
-    - pattern
   additionalProperties: false

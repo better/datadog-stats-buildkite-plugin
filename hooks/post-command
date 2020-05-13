@@ -1,23 +1,21 @@
 #!/bin/bash
 set -euo pipefail
 
+basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+
+. "$basedir/lib/get-tags.sh"
+. "$basedir/lib/report-to-datadog.sh"
+
 NOW=$(date +%s%3N)
 START_TIME=$BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS
+BASE_METRIC_PATH=${BUILDKITE_PLUGIN_DATADOG_STATS_METRIC_PREFIX:-buildkite.steps}
 
 echo "--- :datadog: Recording command run time"
 
-RUNTIME_MS=$(($NOW-$START_TIME))
-BK_COMMAND=${BUILDKITE_COMMAND}
-BK_LABEL=${BUILDKITE_LABEL}
+METRIC_NAME=${BASE_METRIC_PATH}.duration
+METRIC_VALUE=$(($NOW-$START_TIME))
+TAGS=$(getTags)
 
-IS_MASTER=false
+echo "Reporting ${METRIC_NAME} as ${METRIC_VALUE} with tags ${TAGS} to datadog"
 
-if [ "$BUILDKITE_BRANCH" == "master" ]; then
-  IS_MASTER=true
-fi
-
-PIPELINE_SLUG=${BUILDKITE_PIPELINE_SLUG}
-RETRY_COUNT=${BUILDKITE_RETRY_COUNT:-0}
-
-echo "Total runtime ${RUNTIME_MS}ms"
-echo Tags: is_master:${IS_MASTER},pipeline_slug:${PIPELINE_SLUG},step_command:${BK_COMMAND},step_label:${BK_LABEL},retry_count:${RETRY_COUNT}
+reportToDatadog $METRIC_NAME $METRIC_VALUE d "${TAGS}"
