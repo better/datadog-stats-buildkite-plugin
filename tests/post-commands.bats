@@ -13,8 +13,8 @@ load "$BATS_PATH/load.bash"
   run "$PWD/hooks/post-command"
 
   assert_success
-  assert_output --partial "Reporting buildkite.steps.duration as 90"
-  assert_output --partial "tags is_master:true,pipeline_slug:monorepo,step_command:cd somewhere && make do-something,step_label::shipit: deploy-prod,retry_count:0"
+  assert_output --partial "Reporting buildkite.steps.duration with value=90"
+  assert_output --partial "tags=is_master:true,pipeline_slug:monorepo,step_command:cd somewhere && make do-something,step_label::shipit: deploy-prod,retry_count:0"
 
   unset BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS
   unset BUILDKITE_BRANCH
@@ -34,8 +34,8 @@ load "$BATS_PATH/load.bash"
   run "$PWD/hooks/post-command"
 
   assert_success
-  assert_output --partial "Reporting buildkite.steps.duration as 90"
-  assert_output --partial "tags is_master:false,pipeline_slug:monorepo,step_command:cd somewhere && make do-something,step_label::shipit: deploy-prod,retry_count:0"
+  assert_output --partial "Reporting buildkite.steps.duration with value=90"
+  assert_output --partial "tags=is_master:false,pipeline_slug:monorepo,step_command:cd somewhere && make do-something,step_label::shipit: deploy-prod,retry_count:0"
 
   unset BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS
   unset BUILDKITE_BRANCH
@@ -60,8 +60,8 @@ load "$BATS_PATH/load.bash"
   run "$PWD/hooks/post-command"
 
   assert_success
-  assert_output --partial "Reporting buildkite.steps.duration as 90"
-  assert_output --partial "tags is_master:false,pipeline_slug:monorepo,step_command:cd somewhere && make do-something,step_label::shipit: deploy-prod,retry_count:0,my-tag:my-tag-value,my-other-tag:my-other-tag-value"
+  assert_output --partial "Reporting buildkite.steps.duration with value=90"
+  assert_output --partial "tags=is_master:false,pipeline_slug:monorepo,step_command:cd somewhere && make do-something,step_label::shipit: deploy-prod,retry_count:0,my-tag:my-tag-value,my-other-tag:my-other-tag-value"
 
   unset BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS
   unset BUILDKITE_BRANCH
