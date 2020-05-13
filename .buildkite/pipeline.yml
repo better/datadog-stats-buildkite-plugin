@@ -3,7 +3,7 @@ steps:
     plugins:
       - docker-compose#v3.3.0:
           run: lint
-  - label: ":test_tube: Tests"
+  - label: ":karate: Tests"
     plugins:
       - docker-compose#v3.3.0:
           run: tests
