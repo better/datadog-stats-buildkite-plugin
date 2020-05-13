@@ -7,5 +7,9 @@ requirements:
 configuration:
   properties:
     dogstatsd_host:
-      name: string
+      type: string
+    dogstatsd_port:
+      type: string
+  required:
+    - dogstatsd_host
   additionalProperties: false

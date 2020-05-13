@@ -11,14 +11,15 @@ steps:
   - command: ls
     plugins:
       - better/datadog-stats#v1.0.0:
-        name: '*.md'
+        dogstatsd_host: 'localhost'
 ```
 
 ## Configuration
 
-### `name` (Required, string)
+### `dogstatsd_host` (Required, string)
 
-The file name pattern, for example `*.ts`. Supports any pattern supported by [find -name](http://man7.org/linux/man-pages/man1/find.1.html).
+The host where this agent can reach a running instance of dogstatsd for
+reporting metrics to.
 
 ## Developing
 
