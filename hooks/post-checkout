@@ -15,10 +15,10 @@ basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
 NOW=$(date +%s%3N)
 
-echo "--- :datadog: Recording command run time"
+echo "--- :datadog: Recording checkout run time"
 
-METRIC_NAME=$(getMetricName "command.duration")
-METRIC_VALUE=$(timeDiff "$BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS")
+METRIC_NAME=$(getMetricName "checkout.duration")
+METRIC_VALUE=$(timeDiff "$BUILDKITE_PLUGIN_DATADOG_STATS_CHECKOUT_START_TIME_MS")
 TAGS=$(getTags)
 
 reportToDatadog "${METRIC_NAME}" "${METRIC_VALUE}" d "${TAGS}"

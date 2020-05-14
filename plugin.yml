@@ -10,6 +10,18 @@ configuration:
       type: string
     dogstatsd_port:
       type: string
+    additional_tags:
+      type: array
+      minimum: 1
+      items:
+        type: object
+        properties:
+          tag:
+            type: string
+          env_var:
+            type: string
+          value:
+            type: string
   required:
     - dogstatsd_host
   additionalProperties: false

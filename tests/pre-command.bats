@@ -6,6 +6,5 @@ load "$BATS_PATH/load.bash"
   run "$PWD/hooks/pre-command"
 
   assert_success
-  # Check that we produced the right output at least to the second
   assert_output --partial "Command started at $(date +%s)"
 }
