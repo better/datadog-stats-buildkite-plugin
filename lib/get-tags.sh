@@ -21,6 +21,7 @@ function readAdditionalTags() {
     fi
   done
 
+  # shellcheck disable=SC2001
   echo -n "$(IFS=$','; echo "${result[*]}" | sed 's/,$//')"
 }
 
@@ -40,7 +41,7 @@ function getTags() {
 
   RESULT="is_master:${IS_MASTER},pipeline_slug:${PIPELINE_SLUG},step_command:${BK_COMMAND},step_label:${BK_LABEL},retry_count:${RETRY_COUNT}"
 
-  if [ -n "ADDITIONAL_TAGS" ]; then
+  if [ -n "$ADDITIONAL_TAGS" ]; then
     RESULT+=",${ADDITIONAL_TAGS}"
   fi
 

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -euo pipefail
+
+echo "--- :datadog: Recording checkout start time"
+
+BUILDKITE_PLUGIN_DATADOG_STATS_CHECKOUT_START_TIME_MS=$(date +%s%3N)
+
+export BUILDKITE_PLUGIN_DATADOG_STATS_CHECKOUT_START_TIME_MS
+
+echo "Command started at ${BUILDKITE_PLUGIN_DATADOG_STATS_CHECKOUT_START_TIME_MS}"

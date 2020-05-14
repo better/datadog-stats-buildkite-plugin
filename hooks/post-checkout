@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -euo pipefail
+
+basedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+
+# shellcheck source=lib/get-tags.sh
+. "$basedir/lib/get-tags.sh"
+# shellcheck source=lib/report-to-datadog.sh
+. "$basedir/lib/report-to-datadog.sh"
+# shellcheck source=lib/time-diff.sh
+. "$basedir/lib/time-diff.sh"
+# shellcheck source=lib/get-metric-name.sh
+. "$basedir/lib/get-metric-name.sh"
+
+NOW=$(date +%s%3N)
+
+echo "--- :datadog: Recording command run time"
+
+METRIC_NAME=$(getMetricName "checkout.duration")
+METRIC_VALUE=$(timeDiff "$BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS")
+TAGS=$(getTags)
+
+reportToDatadog "${METRIC_NAME}" "${METRIC_VALUE}" d "${TAGS}"
