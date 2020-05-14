@@ -4,7 +4,7 @@ load "$BATS_PATH/load.bash"
 
 @test "Sets the correct tags and runtime for the master branch" {
   NOW=$(date +%s%3N)
-  export BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS=$(($NOW-900))
+  export BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS=$((NOW-900))
   export BUILDKITE_BRANCH=master
   export BUILDKITE_PIPELINE_SLUG=monorepo
   export BUILDKITE_COMMAND="cd somewhere && make do-something"
@@ -25,7 +25,7 @@ load "$BATS_PATH/load.bash"
 
 @test "Sets the correct tags and runtime for a non-master branch" {
   NOW=$(date +%s%3N)
-  export BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS=$(($NOW-900))
+  export BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS=$((NOW-900))
   export BUILDKITE_BRANCH=some-branch
   export BUILDKITE_PIPELINE_SLUG=monorepo
   export BUILDKITE_COMMAND="cd somewhere && make do-something"
@@ -46,7 +46,7 @@ load "$BATS_PATH/load.bash"
 
 @test "It supports specifying additional tags by value and env var" {
   NOW=$(date +%s%3N)
-  export BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS=$(($NOW-900))
+  export BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS=$((NOW-900))
   export BUILDKITE_BRANCH=some-branch
   export BUILDKITE_PIPELINE_SLUG=monorepo
   export BUILDKITE_COMMAND="cd somewhere && make do-something"
