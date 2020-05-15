@@ -21,4 +21,4 @@ METRIC_NAME=$(getMetricName "checkout.duration")
 METRIC_VALUE=$(timeDiff "$BUILDKITE_PLUGIN_DATADOG_STATS_CHECKOUT_START_TIME_MS")
 TAGS=$(getTags)
 
-reportToDatadog "${METRIC_NAME}" "${METRIC_VALUE}" d "${TAGS}"
+reportToDatadog "${METRIC_NAME}" "${METRIC_VALUE}" h "${TAGS}"

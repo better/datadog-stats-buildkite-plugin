@@ -2,8 +2,7 @@ name: Datadog Stats
 description: Collects detailed stats on build times and outcomes and sends to datadog
 author: https://github.com/better
 requirements:
-  - buildkite-agent
-  - nc
+  - docker
 configuration:
   properties:
     dogstatsd_host:

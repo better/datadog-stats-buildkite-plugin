@@ -21,4 +21,4 @@ METRIC_NAME=$(getMetricName "command.duration")
 METRIC_VALUE=$(timeDiff "$BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS")
 TAGS=$(getTags)
 
-reportToDatadog "${METRIC_NAME}" "${METRIC_VALUE}" d "${TAGS}"
+reportToDatadog "${METRIC_NAME}" "${METRIC_VALUE}" h "${TAGS}"
