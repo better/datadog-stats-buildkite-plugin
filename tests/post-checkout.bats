@@ -9,16 +9,18 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PIPELINE_SLUG=monorepo
   export BUILDKITE_COMMAND="cd somewhere && make do-something"
   export BUILDKITE_LABEL=":shipit: deploy-prod"
+  export BUILDKITE_AGENT_META_DATA_QUEUE="default"
 
   run "$PWD/hooks/post-checkout"
 
   assert_success
   assert_output --partial "Reporting buildkite.steps.checkout.duration with value=90"
-  assert_output --partial "tags=is_master:true,pipeline_slug:monorepo,step_command:cd somewhere && make do-something,step_label::shipit: deploy-prod,retry_count:0"
+  assert_output --partial "tags=is_master:true,pipeline_slug:monorepo,step_command:cd somewhere && make do-something,step_label::shipit: deploy-prod,retry_count:0,agent_queue:default"
 
   unset BUILDKITE_PLUGIN_DATADOG_STATS_COMMAND_START_TIME_MS
   unset BUILDKITE_BRANCH
   unset BUILDKITE_PIPELINE_SLUG
   unset BUILDKITE_COMMAND
   unset BUILDKITE_LABEL
+  unset BUILDKITE_AGENT_META_DATA_QUEUE
 }
