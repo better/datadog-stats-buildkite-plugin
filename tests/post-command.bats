@@ -11,6 +11,9 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_LABEL=":shipit: deploy-prod"
   export BUILDKITE_AGENT_META_DATA_QUEUE="default"
 
+  stub docker \
+    "run -i --rm subfuzion/netcat -4u -w1 \"localhost\" \"8125\""
+
   run "$PWD/hooks/post-command"
 
   assert_success
@@ -33,6 +36,9 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_COMMAND="cd somewhere && make do-something"
   export BUILDKITE_LABEL=":shipit: deploy-prod"
   export BUILDKITE_AGENT_META_DATA_QUEUE="default"
+
+  stub docker \
+    "run -i --rm subfuzion/netcat -4u -w1 \"localhost\" \"8125\""
 
   run "$PWD/hooks/post-command"
 
@@ -61,6 +67,9 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PLUGIN_DATADOG_STATS_ADDITIONAL_TAGS_1_TAG="my-other-tag"
   export BUILDKITE_PLUGIN_DATADOG_STATS_ADDITIONAL_TAGS_1_VALUE="my-other-tag-value"
   export BUILDKITE_AGENT_META_DATA_QUEUE="default"
+
+  stub docker \
+    "run -i --rm subfuzion/netcat -4u -w1 \"localhost\" \"8125\""
 
   run "$PWD/hooks/post-command"
 
