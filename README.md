@@ -24,7 +24,7 @@ steps:
   - command: ls
     plugins:
       - better/datadog-stats#v1.0.0:
-        dogstatsd_host: 'localhost'
+          dogstatsd_host: 'localhost'
 ```
 
 ### Example of using additional tags
@@ -39,12 +39,12 @@ steps:
   - command: ls
     plugins:
       - better/datadog-stats#v1.0.0:
-        dogstatsd_host: 'localhost'
-        additional_tags:
-          - tag: project
-            env_var: PROJECT
-          - tag: hard_coded_value
-            value: some_string
+          dogstatsd_host: 'localhost'
+          additional_tags:
+            - tag: project
+              env_var: PROJECT
+            - tag: hard_coded_value
+              value: some_string
 ```
 
 ## Configuration
