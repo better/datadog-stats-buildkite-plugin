@@ -9,6 +9,7 @@ load "$BATS_PATH/load.bash"
   export BUILDKITE_PIPELINE_SLUG=monorepo
   export BUILDKITE_COMMAND="cd somewhere && make do-something"
   export BUILDKITE_LABEL=":shipit: deploy-prod"
+  export BUILDKITE_AGENT_META_DATA_QUEUE="default"
 
   run "$PWD/hooks/pre-exit"
 
@@ -21,4 +22,5 @@ load "$BATS_PATH/load.bash"
   unset BUILDKITE_PIPELINE_SLUG
   unset BUILDKITE_COMMAND
   unset BUILDKITE_LABEL
+  unset BUILDKITE_AGENT_META_DATA_QUEUE
 }
