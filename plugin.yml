@@ -10,6 +10,8 @@ configuration:
       type: string
     dogstatsd_port:
       type: string
+    metric_prefix:
+      type: string
     additional_tags:
       type: array
       minimum: 1
