@@ -11,7 +11,6 @@ By default this tags each of those metrics with the following tags:
 
 * `is_master` - Whether or not this branch is `master`
 * `pipeline_slug` - The pipeline slug for the pipeline this step is running in
-* `step_command` - The command used for this particular step
 * `step_label` - The label used for this particular step
 * `retry_count` - The current retry count
 * `agent_queue` - The queue that the agent who ran this job came from

@@ -26,7 +26,6 @@ function readAdditionalTags() {
 }
 
 function getTags() {
-  BK_COMMAND=${BUILDKITE_COMMAND}
   BK_LABEL=${BUILDKITE_LABEL}
   BK_AGENT_QUEUE=${BUILDKITE_AGENT_META_DATA_QUEUE}
 
@@ -40,7 +39,7 @@ function getTags() {
   RETRY_COUNT=${BUILDKITE_RETRY_COUNT:-0}
   ADDITIONAL_TAGS=$(readAdditionalTags)
 
-  RESULT="is_master:${IS_MASTER},pipeline_slug:${PIPELINE_SLUG},step_command:${BK_COMMAND},step_label:${BK_LABEL},retry_count:${RETRY_COUNT},agent_queue:${BK_AGENT_QUEUE}"
+  RESULT="is_master:${IS_MASTER},pipeline_slug:${PIPELINE_SLUG},step_label:${BK_LABEL},retry_count:${RETRY_COUNT},agent_queue:${BK_AGENT_QUEUE}"
 
   if [ -n "$ADDITIONAL_TAGS" ]; then
     RESULT+=",${ADDITIONAL_TAGS}"
