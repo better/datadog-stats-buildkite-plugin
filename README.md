@@ -23,7 +23,7 @@ Add the following to your `pipeline.yml`:
 steps:
   - command: ls
     plugins:
-      - better/datadog-stats#v1.0.0:
+      - better/datadog-stats#v1.0.2:
           dogstatsd_host: 'localhost'
 ```
 
@@ -38,7 +38,7 @@ will add the tags `project:<your PROJECT env var>` and
 steps:
   - command: ls
     plugins:
-      - better/datadog-stats#v1.0.0:
+      - better/datadog-stats#v1.0.2:
           dogstatsd_host: 'localhost'
           additional_tags:
             - tag: project
