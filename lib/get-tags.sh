@@ -9,6 +9,7 @@ function readAdditionalTags() {
     value_var="BUILDKITE_PLUGIN_DATADOG_STATS_ADDITIONAL_TAGS_${i}_VALUE"
 
     if [[ -z ${!tag_var:-} ]]; then
+      result+=("")
       break;
     fi
 
