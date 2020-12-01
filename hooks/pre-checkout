@@ -4,6 +4,7 @@ set -euo pipefail
 
 echo "--- :git: Check for shallow clone override"
 if [[ "${SHALLOW_CLONE:-false}" == "true" ]]; then
+  echo "shallow clone override enabled"
   export BUILDKITE_GIT_CLONE_FLAGS="-v --depth 1"
   export BUILDKITE_GIT_FETCH_FLAGS="-v --depth 1 --prune"
 fi
