@@ -2,8 +2,11 @@
 
 set -euo pipefail
 
-echo "--- :git: Check for shallow clone"
-echo "SHALLOW_CLONE = ${SHALLOW_CLONE:-false}"
+echo "--- :git: Check for shallow clone override"
+if [[ "${SHALLOW_CLONE:-false}" == "true" ]]; then
+  export BUILDKITE_GIT_CLONE_FLAGS="-v --depth 1"
+  export BUILDKITE_GIT_FETCH_FLAGS="-v --depth 1 --prune"
+fi
 
 echo "--- :datadog: Recording checkout start time"
 
