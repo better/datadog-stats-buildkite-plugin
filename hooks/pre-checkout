@@ -3,7 +3,7 @@
 set -euo pipefail
 
 echo "--- :git: Check for shallow clone"
-echo SHALLOW_CLONE = ${SHALLOW_CLONE:-false}
+echo "SHALLOW_CLONE = ${SHALLOW_CLONE:-false}"
 
 echo "--- :datadog: Recording checkout start time"
 
