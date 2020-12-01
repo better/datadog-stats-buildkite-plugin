@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+echo "--- :git: Check for shallow clone"
+echo SHALLOW_CLONE = ${SHALLOW_CLONE:-false}
+
 echo "--- :datadog: Recording checkout start time"
 
 BUILDKITE_PLUGIN_DATADOG_STATS_CHECKOUT_START_TIME_MS=$(date +%s%3N)
